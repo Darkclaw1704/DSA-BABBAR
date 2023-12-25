@@ -3,43 +3,91 @@
 #include <algorithm>
 using namespace std;
 
+int findPivot(int arr[], int n ){
 
-
-int findPivot(vector<int>& arr){
     int start = 0;
-    int end = arr.size() -1 ;
+    int end = n - 1;
+
     int mid = start + (end-start)/2;
 
-    while (start <= end)
+    while (start<end)
     {
-        if (arr[mid] < arr[0]){
-            end = mid - 1;
+        if (arr[mid] > arr[end]){
+            // cout<<"condition1"<<endl;
+            start = mid + 1;
         }
         else{
-            start = mid;
+            // cout<<"condition2"<<endl;
+            end = mid;
         }
 
         mid = start + (end-start)/2;
     }
-    
-    return mid;
 
+    return mid;
+ 
 }
 
 
+int binarySearch(int arr[],int start, int end, int k){
+    int mid = start + (end-start)/2;
+
+    while (start < end)
+    {
+        if(arr[mid] == k){
+            return mid;
+        }
+        else if (arr[mid]<k){
+            start = mid+1;
+        }
+        else{
+            end = mid - 1;
+        }
+    
+        mid = start + (end- start)/2;
+    }
+
+    return mid;
+    
+}
+
+int searchRotatedArray(int arr[], int n, int k){
+    int pivot = findPivot(arr, n);
+
+    cout<<pivot<<endl;
+
+    int index;
+
+    if (arr[n-1] < k){
+        // cout<<"condition1"<<endl;
+        index = binarySearch(arr, 0, pivot - 1,k);
+    }
+    else if (arr[n-1]>k)
+    {
+        // cout<<"condition2"<<endl;
+        index = binarySearch(arr,pivot,n-1,k);
+    } else {
+        return n-1;
+    }
+
+    if (arr[index] == k ){
+        return index;
+    }
+    return -1 ;
+    
+
+}
 
 int main(){
 
-    vector<int> testArray;
-    testArray.push_back(3);
-    testArray.push_back(8);
-    testArray.push_back(10);
-    testArray.push_back(17);
-    testArray.push_back(1);
+// [7,8,9,10,11,1]
+// [0,1,2, 3, 4,5]
 
-    int answer = findPivot(testArray);
+    int arr[4] = {2,3,5,8};
+
+
+    int answer = searchRotatedArray(arr,4,8);
 
     cout<<answer;
 
-    return 0;
 }
