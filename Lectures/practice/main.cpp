@@ -1,93 +1,98 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <math.h>
 using namespace std;
 
-int findPivot(int arr[], int n ){
 
+int myBase(int num){
     int start = 0;
-    int end = n - 1;
-
+    int end = num;
     int mid = start + (end-start)/2;
 
-    while (start<end)
+    int answer ;
+
+    while (start<=end)
     {
-        if (arr[mid] > arr[end]){
-            // cout<<"condition1"<<endl;
+
+        if (pow(mid,2) == num){
+            return mid;
+        }
+
+        if (pow(mid,2) > num){
+            end = mid - 1;
+        }
+        else if (pow(mid,2) < num){
+            answer = mid;
             start = mid + 1;
         }
-        else{
-            // cout<<"condition2"<<endl;
-            end = mid;
+    
+        mid = start + (end-start)/2;
+    }
+
+    return answer;
+
+}
+
+
+double precision(double base,int num, int place){
+    int start = 0;
+    int end = 9;
+    double mid = start + (end-start)/2;
+
+    double answer;
+    int div=1;
+    for (int i=0; i<place; i++){
+        div*=10;
+    }
+
+    while (start <= end)
+    {
+    
+        double square =  (base + (mid/div))*(base + (mid/div));        
+
+        if (square == num){
+            return base + mid/div; 
+        }    
+    
+        if (square > num){
+            end = mid - 1;
+        }
+        else if (square < num){
+            answer = mid;
+            start = mid + 1; 
         }
 
         mid = start + (end-start)/2;
     }
 
-    return mid;
- 
-}
 
-
-int binarySearch(int arr[],int start, int end, int k){
-    int mid = start + (end-start)/2;
-
-    while (start < end)
-    {
-        if(arr[mid] == k){
-            return mid;
-        }
-        else if (arr[mid]<k){
-            start = mid+1;
-        }
-        else{
-            end = mid - 1;
-        }
-    
-        mid = start + (end- start)/2;
-    }
-
-    return mid;
+    return base + (answer/div);
     
 }
 
-int searchRotatedArray(int arr[], int n, int k){
-    int pivot = findPivot(arr, n);
+double sqRoot(int num, int places){
+    double base = myBase(num);
 
-    cout<<pivot<<endl;
-
-    int index;
-
-    if (arr[n-1] < k){
-        // cout<<"condition1"<<endl;
-        index = binarySearch(arr, 0, pivot - 1,k);
+    for(int i = 1; i <=places ; i++){
+        base = precision(base, num, i);
     }
-    else if (arr[n-1]>k)
-    {
-        // cout<<"condition2"<<endl;
-        index = binarySearch(arr,pivot,n-1,k);
-    } else {
-        return n-1;
-    }
-
-    if (arr[index] == k ){
-        return index;
-    }
-    return -1 ;
+    return base;
     
-
 }
 
 int main(){
+    
+    vector<int> testArray;
+    testArray.push_back(1);
+    testArray.push_back(2);
+    testArray.push_back(4);
+    testArray.push_back(5);
 
-// [7,8,9,10,11,1]
-// [0,1,2, 3, 4,5]
-
-    int arr[4] = {2,3,5,8};
-
-
-    int answer = searchRotatedArray(arr,4,8);
+    double answer = sqRoot(101,3);
 
     cout<<answer;
 
+    return 0;
 }
+
