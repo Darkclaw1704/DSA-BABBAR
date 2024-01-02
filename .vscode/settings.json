@@ -2,6 +2,8 @@
     "files.associations": {
         "iostream": "cpp",
         "algorithm": "cpp",
-        "memory_resource": "cpp"
+        "memory_resource": "cpp",
+        "ostream": "cpp",
+        "vector": "cpp"
     }
 }
