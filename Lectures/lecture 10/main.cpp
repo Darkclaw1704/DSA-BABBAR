@@ -143,7 +143,7 @@ vector<vector<int>> pairSum(vector<int> &arr, int s){
                 pair.push_back(duplicateArr[iteration]);
                 pair.push_back(duplicateArr[finding]);
                 pairs.push_back(pair);
-                duplicateArr[finding] = INT_MAX;
+                // duplicateArr[finding] = INT_MAX;
 //                break;
             }
         }
