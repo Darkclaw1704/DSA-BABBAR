@@ -2,13 +2,13 @@
 using namespace std;
 
 int main(){
-    char *ptr = new char;
-    *ptr = 65;
-    cout <<"value at heap memory : "<<*ptr<<endl;
+    // char *ptr = new char;
+    // *ptr = 65;
+    // cout <<"value at heap memory : "<<*ptr<<endl;
 
-    while(true){
-        int i = 5;
-    }
+    // while(true){
+    //     int i = 5;
+    // }
 
     // while(true){
     //     int *p = new int;
@@ -17,6 +17,8 @@ int main(){
     int *p = new int;
     delete p;
 
+    int *ptr = new int[50];
+    delete [] ptr;
 }
 
 
