@@ -36,7 +36,9 @@ int main(){
     cout<<arr[1][1]<<endl;
 
     delete [] arr;
-    
+
+    *arr[1] = 0;
+    cout<<arr[1]<<endl;
     cout<<arr[1][2]<<endl;
 
     // int *p = new int;
