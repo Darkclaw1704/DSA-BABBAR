@@ -4,6 +4,7 @@
 2. Search in Rotated and sorted Array
 
 https://www.codingninjas.com/studio/problems/search-in-rotated-sorted-array_1082554?interviewProblemRedirection=true
+https://leetcode.com/problems/search-in-rotated-sorted-array/description/
 
 3. Find square root of x 
 

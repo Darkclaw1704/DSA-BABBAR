@@ -2,6 +2,7 @@
 
 1. First and Last Position of an Element In Sorted Array
 https://www.codingninjas.com/studio/problems/first-and-last-position-of-an-element-in-sorted-array_1082549?interviewProblemRedirection=true
+https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
 
 2. Find total number of occurances
 
