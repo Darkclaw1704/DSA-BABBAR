@@ -4,6 +4,8 @@
         "algorithm": "cpp",
         "memory_resource": "cpp",
         "ostream": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "sstream": "cpp",
+        "regex": "cpp"
     }
 }
